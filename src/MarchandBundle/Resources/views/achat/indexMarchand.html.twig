@@ -1,0 +1,132 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+
+        <h1>Liste des commandes</h1>
+
+        <table class="col-xs-8 col-xs-offset-2">
+            <thead>
+            <tr>
+                <th>N° Facture</th>
+                <th>Client</th>
+                <th>Fruit</th>
+                <th>Quantité</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for achat in achats %}
+                <tr>
+                    <td><a href="{{ path('achat_show_marchand', { 'id': achat.id }) }}">{{ achat.id }}</a></td>
+                    <td>{{ achat.client }}</td>
+                    <td>{{ achat.fruit }}</td>
+                    <td>{{ achat.quantite }}</td>
+                    <td>{{ achat.total }} €</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('achat_show_marchand', { 'id': achat.id }) }}">Voir</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('achat_edit', { 'id': achat.id }) }}">Modifier</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <ul class="center-block text-center">
+            <li>
+                <a href="{{ path('achat_new_marchand') }}" class="btn btn-default mybtn">Nouvelle commande</a>
+            </li>
+        </ul>
+
+
+    </div>
+
+    <div class="row">
+
+        <h1>Inventaire des fruits</h1>
+
+        <table class="col-xs-8 col-xs-offset-2">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for fruit in fruits %}
+                <tr>
+                    <td>{{ fruit.nom }}</td>
+                    <td>{{ fruit.prix }}</td>
+                    <td>{{ fruit.quantite }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('fruit_show', { 'id': fruit.id }) }}">Voir</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('fruit_edit', { 'id': fruit.id }) }}">Modifier</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <ul class="center-block text-center">
+            <li>
+                <a href="{{ path('fruit_new') }}" class="btn btn-default mybtn">Ajouter un fruit</a>
+            </li>
+        </ul>
+
+    </div>
+    <br>
+    <div class="row">
+
+        <h1>Liste des utilisateurs</h1>
+
+        <table class="col-xs-8 col-xs-offset-2">
+            <thead>
+            <tr>
+                <th>Identifiant</th>
+                <th>Nom d'utilisateur</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('marchand_users_delete', { 'id': user.id }) }}">Supprimer</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <ul class="center-block text-center">
+            <li>
+                <a href="{{ path('marchand_user_new') }}" class="btn btn-default mybtn">Ajouter un client</a>
+            </li>
+        </ul>
+
+
+    </div>
+{% endblock %}

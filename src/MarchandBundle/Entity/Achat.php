@@ -136,4 +136,35 @@ class Achat
     {
         return $this->total;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->client = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add client
+     *
+     * @param \FlyBundle\Entity\User $client
+     *
+     * @return Achat
+     */
+    public function addClient(\FlyBundle\Entity\User $client)
+    {
+        $this->client[] = $client;
+
+        return $this;
+    }
+
+    /**
+     * Remove client
+     *
+     * @param \FlyBundle\Entity\User $client
+     */
+    public function removeClient(\FlyBundle\Entity\User $client)
+    {
+        $this->client->removeElement($client);
+    }
 }

@@ -18,7 +18,7 @@
                 <td>{{ fruit.prix }}</td>
             </tr>
             <tr>
-                <th>Quantite</th>
+                <th>Quantité</th>
                 <td>{{ fruit.quantite }}</td>
             </tr>
         </tbody>
@@ -26,14 +26,16 @@
 
     <ul>
         <li>
-            <a href="{{ path('fruit_index') }}">Back to the list</a>
+            <a href="{{ path('achat_index_marchand') }}" class="btn btn-default mybtn">Retour à l'inventaire</a>
         </li>
+        <br>
         <li>
-            <a href="{{ path('fruit_edit', { 'id': fruit.id }) }}">Edit</a>
+            <a href="{{ path('fruit_edit', { 'id': fruit.id }) }}" class="btn btn-default">Modifier</a>
         </li>
+        <br>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Supprimer" class="btn btn-default">
             {{ form_end(delete_form) }}
         </li>
     </ul>

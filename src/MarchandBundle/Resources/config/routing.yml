@@ -10,3 +10,10 @@ marchand_homepage:
     path:     /
     defaults: { _controller: MarchandBundle:Default:index }
 
+marchand_users_delete:
+    path:     /marchand/users/{id}/delete
+    defaults: { _controller: "MarchandBundle:Achat:userDelete" }
+
+marchand_user_new:
+    path:     /marchand/users/new
+    defaults: { _controller: "MarchandBundle:Achat:newUser" }

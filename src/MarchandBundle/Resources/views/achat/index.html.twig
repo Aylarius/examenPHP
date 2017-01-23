@@ -1,15 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Achats list</h1>
+    <h1>Liste de vos commandes</h1>
 
-    <table>
+    <table class="col-xs-8 col-xs-offset-2">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Client</th>
+                <th>N° Facture</th>
                 <th>Fruit</th>
-                <th>Quantite</th>
+                <th>Quantité</th>
                 <th>Total</th>
                 <th>Actions</th>
             </tr>
@@ -18,17 +17,13 @@
         {% for achat in achats %}
             <tr>
                 <td><a href="{{ path('achat_show', { 'id': achat.id }) }}">{{ achat.id }}</a></td>
-                <td>{{ achat.client }}</td>
                 <td>{{ achat.fruit }}</td>
                 <td>{{ achat.quantite }}</td>
                 <td>{{ achat.total }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('achat_show', { 'id': achat.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('achat_edit', { 'id': achat.id }) }}">edit</a>
+                            <a href="{{ path('achat_show', { 'id': achat.id }) }}">Voir</a>
                         </li>
                     </ul>
                 </td>
@@ -37,9 +32,9 @@
         </tbody>
     </table>
 
-    <ul>
+    <ul class="center-block text-center">
         <li>
-            <a href="{{ path('achat_new') }}">Create a new achat</a>
+            <a href="{{ path('achat_new') }}" class="btn btn-default mybtn">Passer une nouvelle commande</a>
         </li>
     </ul>
 {% endblock %}

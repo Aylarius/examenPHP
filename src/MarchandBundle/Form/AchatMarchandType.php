@@ -6,16 +6,16 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AchatType extends AbstractType
+class AchatMarchandType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('fruit')->add('quantite')       ;
+        $builder->add('client')->add('fruit')->add('quantite')       ;
     }
-    
+
     /**
      * {@inheritdoc}
      */

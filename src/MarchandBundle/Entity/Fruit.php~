@@ -9,6 +9,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Fruit
 {
+
+    public function __toString()
+    {
+        return $this->nom;
+    }
+
     /**
      * @var int
      */
@@ -63,6 +69,7 @@ class Fruit
         return $this->nom;
     }
 
+
     /**
      * Set prix
      *
@@ -108,4 +115,66 @@ class Fruit
     {
         return $this->quantite;
     }
+    /**
+     * @var string
+     */
+    private $achats;
+
+
+    /**
+     * Set achats
+     *
+     * @param string $achats
+     *
+     * @return Fruit
+     */
+    public function setAchats($achats)
+    {
+        $this->achats = $achats;
+
+        return $this;
+    }
+
+    /**
+     * Get achats
+     *
+     * @return string
+     */
+    public function getAchats()
+    {
+        return $this->achats;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->achats = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add achat
+     *
+     * @param \MarchandBundle\Entity\Achat $achat
+     *
+     * @return Fruit
+     */
+    public function addAchat(\MarchandBundle\Entity\Achat $achat)
+    {
+        $this->achats[] = $achat;
+
+        return $this;
+    }
+
+    /**
+     * Remove achat
+     *
+     * @param \MarchandBundle\Entity\Achat $achat
+     */
+    public function removeAchat(\MarchandBundle\Entity\Achat $achat)
+    {
+        $this->achats->removeElement($achat);
+    }
+
+
 }

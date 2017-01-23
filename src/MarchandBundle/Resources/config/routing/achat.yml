@@ -14,11 +14,27 @@ achat_new:
     methods:  [GET, POST]
 
 achat_edit:
-    path:     /{id}/edit
+    path:     /marchand/{id}/edit
     defaults: { _controller: "MarchandBundle:Achat:edit" }
     methods:  [GET, POST]
 
 achat_delete:
-    path:     /{id}/delete
+    path:     /marchand/{id}/delete
     defaults: { _controller: "MarchandBundle:Achat:delete" }
     methods:  DELETE
+
+achat_index_marchand:
+    path:     /marchand/
+    defaults: { _controller: "MarchandBundle:Achat:indexMarchand" }
+    methods:  GET
+
+achat_new_marchand:
+    path:     /marchand/new
+    defaults: { _controller: "MarchandBundle:Achat:newMarchand" }
+    methods:  [GET, POST]
+
+achat_show_marchand:
+    path:     /marchand/{id}/show
+    defaults: { _controller: "MarchandBundle:Achat:showMarchand" }
+    methods:  GET
+

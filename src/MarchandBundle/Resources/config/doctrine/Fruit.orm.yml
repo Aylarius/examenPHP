@@ -13,7 +13,13 @@ MarchandBundle\Entity\Fruit:
             type: string
             length: 255
         prix:
-            type: integer
+            type: float
         quantite:
             type: integer
+
+    oneToMany:
+        achats:
+            targetEntity: MarchandBundle\Entity\Achat
+            mappedBy: fruit
+
     lifecycleCallbacks: {  }

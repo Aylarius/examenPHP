@@ -6,3 +6,5 @@ MarchandBundle\Entity\User:
             type: integer
             generator:
                 strategy: AUTO
+
+    lifecycleCallbacks: {  }

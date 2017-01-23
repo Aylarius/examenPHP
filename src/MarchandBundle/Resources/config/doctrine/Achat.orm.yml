@@ -9,15 +9,22 @@ MarchandBundle\Entity\Achat:
             generator:
                 strategy: AUTO
     fields:
-        client:
-            type: string
-            length: 255
-        fruit:
-            type: string
-            length: 255
         quantite:
             type: integer
         total:
             type: string
             length: 255
+
+
+    manyToOne:
+        fruit:
+            targetEntity: MarchandBundle\Entity\Fruit
+            inversedBy: achats
+        client:
+            targetEntity: MarchandBundle\Entity\User
+            inversedBy: id
+            joinColumn:
+                onDelete: CASCADE
+
+
     lifecycleCallbacks: {  }

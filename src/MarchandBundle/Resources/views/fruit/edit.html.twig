@@ -1,20 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Fruit edit</h1>
+    <h1>Modifier un fruit</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+        <input type="submit" value="Modifier" class="btn btn-default"/>
     {{ form_end(edit_form) }}
-
+<br>
     <ul>
         <li>
-            <a href="{{ path('fruit_index') }}">Back to the list</a>
+            <a href="{{ path('achat_index_marchand') }}" class="btn btn-default mybtn">Retour à l'inventaire</a>
         </li>
+        <br>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Supprimer" class="btn btn-default">
             {{ form_end(delete_form) }}
         </li>
     </ul>
