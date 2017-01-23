@@ -1,0 +1,23 @@
+MarchandBundle\Entity\Achat:
+    type: entity
+    table: null
+    repositoryClass: MarchandBundle\Repository\AchatRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        client:
+            type: string
+            length: 255
+        fruit:
+            type: string
+            length: 255
+        quantite:
+            type: integer
+        total:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }
