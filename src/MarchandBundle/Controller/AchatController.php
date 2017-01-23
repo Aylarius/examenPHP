@@ -43,6 +43,9 @@ class AchatController extends Controller
      */
     public function newAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $fruits = $em->getRepository('MarchandBundle:Fruit')->findAll();
+
         $achat = new Achat();
         $form = $this->createForm('MarchandBundle\Form\AchatType', $achat);
         $form->handleRequest($request);
@@ -66,6 +69,7 @@ class AchatController extends Controller
 
         return $this->render('MarchandBundle:Achat:new.html.twig', array(
             'achat' => $achat,
+            'fruits' => $fruits,
             'form' => $form->createView(),
         ));
     }
@@ -174,12 +178,12 @@ class AchatController extends Controller
         $form->handleRequest($request);
         $quantite = $form->get('quantite')->getData();
         $fruitID = $form->get('fruit')->getData();
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $fruit = $em->getRepository('MarchandBundle:Fruit')->findOneBy(array('id'=>$fruitID));
-            $prix = $fruit->getPrix();
-            $achat->setTotal($prix * $quantite);
+        $em = $this->getDoctrine()->getManager();
+        $fruit = $em->getRepository('MarchandBundle:Fruit')->findOneBy(array('id'=>$fruitID));
+        $prix = $fruit->getPrix();
+        $achat->setTotal($prix * $quantite);
 
+        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($achat);
             $em->flush($achat);
@@ -230,13 +234,6 @@ class AchatController extends Controller
         return $this->render('MarchandBundle:Achat:newUser.html.twig', array(
             'user' => $user,
             'form' => $form->createView(),
-        ));
-
-
-
-
-        return $this->render('MarchandBundle:Achat:userlist.html.twig', array(
-            'users' => $users,
         ));
     }
 
