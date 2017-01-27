@@ -178,13 +178,13 @@ class AchatController extends Controller
         $form->handleRequest($request);
         $quantite = $form->get('quantite')->getData();
         $fruitID = $form->get('fruit')->getData();
-        $em = $this->getDoctrine()->getManager();
-        $fruit = $em->getRepository('MarchandBundle:Fruit')->findOneBy(array('id'=>$fruitID));
-        $prix = $fruit->getPrix();
-        $achat->setTotal($prix * $quantite);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $fruit = $em->getRepository('MarchandBundle:Fruit')->findOneBy(array('id'=>$fruitID));
+            $prix = $fruit->getPrix();
+            $achat->setTotal($prix * $quantite);
+
             $em->persist($achat);
             $em->flush($achat);
 
